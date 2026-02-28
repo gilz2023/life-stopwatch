@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Category Stopwatch</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>Life Category Stopwatch</h1>
+        <p>Track focused time by category.</p>
+        <p class="meta install-note">Mobile: add to home screen after opening from a URL.</p>
+      </header>
+
+      <section class="card">
+        <h2>Add Category</h2>
+        <form id="category-form" class="category-form">
+          <label for="category-name" class="sr-only">Category name</label>
+          <input
+            id="category-name"
+            type="text"
+            maxlength="40"
+            placeholder="e.g. Organic Chemistry"
+            required
+          />
+          <button type="submit">Add</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="section-title-row">
+          <h2>Categories</h2>
+          <button id="stop-active" class="secondary">Stop Active</button>
+        </div>
+        <div id="category-list" class="category-list"></div>
+      </section>
+
+      <section class="card">
+        <h2>Recent Sessions</h2>
+        <div id="session-list" class="session-list"></div>
+      </section>
+    </main>
+
+    <template id="category-template">
+      <article class="category-item">
+        <div>
+          <h3 class="category-name"></h3>
+          <p class="meta">Today: <span class="today-total">00:00:00</span></p>
+          <p class="meta">All time: <span class="all-total">00:00:00</span></p>
+        </div>
+        <div class="actions">
+          <button class="start-stop"></button>
+          <button class="delete secondary">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <template id="session-template">
+      <article class="session-item">
+        <div>
+          <p class="session-title"></p>
+          <p class="session-meta"></p>
+        </div>
+        <div class="session-actions">
+          <button class="edit-session secondary">Edit Time</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
